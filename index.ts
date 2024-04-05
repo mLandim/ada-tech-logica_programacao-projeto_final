@@ -106,13 +106,13 @@ const atualizarCliente = () => {
 
 const deletarCliente = (listaClientes: Cliente[]) => {
     const textoAoresentacao = `Deletar Cliente\n====================================\n\n`
-    const cpf = trataPromptNullOuVazio(`${textoAoresentacao}Informe o CPF do cliente que deseja deletar:`)
-    const clienteDeletar = listaClientes.find(cliente => cliente.cpf === cpf)
+    const id = parseInt(trataPromptNullOuVazio(`${textoAoresentacao}Informe o ID do cliente que deseja deletar:`))
+    const clienteDeletar = listaClientes.find(cliente => cliente.id === id)
     if (clienteDeletar) {
         listaClientes.splice(listaClientes.indexOf(clienteDeletar), 1)
-        alert(`Cliente com CPF ${cpf} deletado com sucesso!`)
+        alert(`Cliente com ID ${id} deletado com sucesso!`)
     } else {
-        let continua = prompt(`Cliente com CPF ${cpf} não localizado.\nDigite 1 para tentar novamente:`)
+        let continua = prompt(`Cliente com ID ${id} não localizado.\nDigite 1 para tentar novamente:`)
         if(continua && continua === '1') {
             deletarCliente(listaClientes)
         }
